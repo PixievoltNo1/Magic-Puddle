@@ -12,8 +12,8 @@ If you're reading this on Glitch, you're already all set up to work on the code 
 
 # Setting up a local build
 
-You'll need [Node](https://nodejs.org/) and [pnpm](https://pnpm.io/).
+To set up development on your own computer, you'll need [Node](https://nodejs.org/).
 
-At the top of the [GitHub repo page](https://github.com/PixievoltNo1/Magic-Puddle) you'll find options for forking and/or downloading the code. Once you have the Git repo's files on your computer, open a terminal there and type `pnpm install` to do the first-time setup.
+At the top of the [GitHub repo page](https://github.com/PixievoltNo1/Magic-Puddle) you'll find options for forking and/or downloading the code. Once you have the Git repo's files on your computer, open a terminal there and type `npm install` to do the first-time setup.
 
-With all the setup done, you can use `pnpm start` to create Magic Puddle in a `build` folder and keep it automatically updated as you edit the source files, or use `pnpm run build` for a one-time build. You'll need an HTTP server of some sort pointed at `build` to try it in your browser; a great basic option is `npx http-server build` (npx is included with Node).
+With all the setup done, you can use `npm start` to create Magic Puddle in a `build` folder and keep it automatically updated as you edit the source files, or use `npm run build` for a one-time build. You'll need an HTTP server of some sort pointed at `build` to try it in your browser; a great basic option is `npx http-server build` (npx is included with Node).
