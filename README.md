@@ -8,7 +8,7 @@
 
 # Recommended build method: Remix on Glitch
 
-If you're reading this on Glitch, you're already all set up to work on the code and have it automatically built for you - have fun! Be sure to reload your preview after making changes.
+If you're reading this on Glitch, you're already all set up to work on the code and have it automatically built for you - have fun! Above the .editorconfig file you'll find the js folder you'll need to open to edit most of the source files. Be sure to reload your preview after making changes.
 
 If you're not on Glitch, [this link](https://glitch.com/edit/#!/remix/magic-puddle) opens a new Glitch project ready to edit.
 
