@@ -1,0 +1,16 @@
+{
+	"name": "Magic Puddle",
+	"description": "Relax with a procedurally-generated animation of colorful ripples.",
+	"start_url": ".",
+	"scope": ".",
+	"display": "standalone",
+	"background_color": "#0000A0",
+	"theme_color": "hsl(240, 100%, 16.7%)",
+	"icons": [{
+		"src": "appIcon.v1.svg",
+		"sizes": "any"
+	}],
+	"screenshots" : [
+		{ "src": "screenshot.png" }
+	]
+}

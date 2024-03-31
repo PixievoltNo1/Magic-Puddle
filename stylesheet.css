@@ -1,0 +1,216 @@
+@font-face {
+	font-family: 'Folks';
+	src: url('Folks-Normal-webfont.v1.woff') format('woff');
+	font-display: block;
+}
+body {
+	margin: 0;
+	font-family: Folks;
+	color: white;
+	background: #0000A0;
+	touch-action: manipulation;
+	height: calc(100svh + (100lvh - 100svh) * 3);
+}
+body.blackBg {
+	background: black;
+}
+:fullscreen::backdrop { display: none; }
+button, label { cursor: pointer; }
+a { color: hsl(90, 100%, 50%); }
+
+#container {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+#meta {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: end;
+	justify-content: space-between;
+	--meta-spacing: 16px;
+}
+@media (orientation: portrait) {
+	#meta {
+		flex-direction: column-reverse;
+	}
+}
+
+#titleCardHolder {
+	margin: var(--meta-spacing);
+	margin-right: 0;
+	height: 10vh;
+	width: auto;
+	flex: 0 1 auto;
+}
+@media (orientation: portrait) {
+	#titleCardHolder {
+		height: auto;
+		width: 80vw;
+		flex: none;
+		align-self: start;
+	}
+}
+#titleCard {
+	display: flex;
+	background: hsla(0, 0%, 35%, 0.5);
+	height: 36px;
+	font-size: 26px;
+	border-radius: 8px; 
+	--title-card-spacing: 5px;
+	padding: 0 var(--title-card-spacing);
+	align-items: center;
+	/* the following are needed to calculate the size needed for #titleCardHolder */
+	flex: none;
+	white-space: nowrap;
+}
+#title {
+	color: hsl(60, 100%, 60%);
+}
+#author {
+	color: hsl(350, 100%, 80%);
+}
+#titleCard button {
+	width: 28px;
+	height: 28px;
+	border-radius: 4px;
+	margin-left: var(--title-card-spacing);
+	background: hsla(0, 0%, 90%, 0.6);
+	border: 0;
+	padding: 0;
+	display: flex;
+}
+#titleCard button img {
+	width: 20px;
+	height: 20px;
+	margin: auto;
+}
+#titleCard button[aria-pressed="true"] {
+	filter: invert(100%);
+}
+#titleCard button:disabled {
+	opacity: 0.4;
+}
+
+#messageBox {
+	position: absolute;
+	top: 25%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 600px;
+	max-width: calc(100% - 40px);
+	border-radius: 24px;
+	padding: 20px;
+	font-size: 26px;
+	background: hsla(0, 0%, 15%, 0.6);
+	z-index: 1;
+	backdrop-filter: blur(8px);
+	text-align: center;
+}
+#message {
+	text-align: start;
+}
+#dismissMessage {
+	font-family: inherit;
+	font-size: 20px;
+	width: 120px;
+	margin-top: 10px;
+}
+
+#updating {
+	position: absolute;
+	top: 25%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 300px;
+	border-radius: 36px;
+	padding: 30px;
+	font-size: 48px;
+	background: hsla(0, 0%, 15%, 0.6);
+	z-index: 1;
+	backdrop-filter: blur(8px);
+	text-align: center;
+}
+
+#optionsLayer {
+	display: flex;
+	flex: none;
+	flex-direction: column;
+	min-height: 0;
+	max-height: calc(100% - var(--meta-spacing) * 2);
+	margin: var(--meta-spacing);
+}
+#optionsLayer[hidden] {
+	visibility: hidden;
+}
+@media (orientation: portrait) {
+	#optionsLayer {
+		flex: 0 1 auto;
+		align-self: center;
+	}
+}
+#optionsPanel {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	background: hsla(0, 0%, 25%, 0.5);
+	--burger-bun-size: 24px;
+	--close-size: 32px;
+	border-radius: var(--burger-bun-size);
+	padding: var(--burger-bun-size) 0;
+	margin-top: calc(var(--close-size) / 2);
+	max-width: 320px;
+	font-size: 22px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+#menu {
+	overflow: auto;
+	text-align: center;
+	flex: 0 1 auto;
+}
+#menu > * {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: hsla(0, 0%, 30%, 0.5);
+	padding: 0.25em;
+}
+#menu > [hidden] { display: none; }
+#menu > * + * {
+	margin-top: 1px;
+}
+#menu .busy {
+	cursor: progress;
+}
+#info {
+	display: block;
+	background: hsla(0, 0%, 55%, 0.5);
+	overflow: auto; /* create a block formatting context to keep paragraph margins inside #info */
+	padding: 0;
+}
+#info p {
+	margin: 0.4em;
+}
+#closeOptions {
+	position: absolute;
+	width: var(--close-size);
+	height: var(--close-size);
+	top: calc(-1 * var(--close-size) / 2);
+	right: 0;
+	background: none;
+	border: 0;
+	padding: 0;
+}
+#closeOptions img {
+	width: var(--close-size);
+	height: var(--close-size);
+}

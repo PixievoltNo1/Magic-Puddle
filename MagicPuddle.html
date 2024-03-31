@@ -1,0 +1,58 @@
+<!doctype html>
+<html itemscope itemtype="https://schema.org/CreativeWork">
+<head>
+<title>Magic Puddle by Pixievolt No. 1</title>
+<meta name="description" itemprop="description" content="Relax with a procedurally-generated animation of colorful ripples.">
+<meta name="viewport" content="width=device-width">
+<script type="module" src="magicPuddle.js"></script>
+<link rel="stylesheet" href="stylesheet.css">
+<link rel="icon" href="appIcon.v1.svg">
+<link rel="manifest" href="app.webmanifest">
+<meta itemprop="image" content="screenshot.png">
+</head>
+<body>
+<div id="container">
+	<svg id="puddle" version="1.1"></svg>
+</div>
+<div id="meta">
+	<div id="titleCard" style="visibility: hidden;">
+		<div id="titleCardText">
+			<span id="title" itemprop="name">Magic Puddle</span> by <span id="author">Pixievolt No. 1</span>
+		</div>
+		<button id="optionsButton" aria-label="Options" aria-pressed="false">
+			<img src="titleCardButtons.v1.svg#menu" aria-hidden="true">
+		</button>
+		<button id="fullscreen" aria-label="Fullscreen" aria-pressed="false">
+			<img src="titleCardButtons.v1.svg#fullscreen" aria-hidden="true">
+		</button>
+	</div>
+	<svg id="titleCardHolder" preserveAspectRatio="xMinYMax meet">
+		<foreignObject width="100%" height="100%"></foreignObject>
+	</svg>
+	<div id="messageBox" role="alertdialog" aria-describedby="message" hidden>
+		<div id="message"></div>
+		<button id="dismissMessage">OK</button>
+	</div>
+	<div id="updating" hidden>Updating...</div>
+	<div id="optionsLayer" hidden inert>
+		<div id="optionsPanel">
+			<div id="menu">
+				<label><input type="checkbox" id="blackBg" autocomplete="off"> Black Background</label>
+				<label><input type="checkbox" id="offline" autocomplete="off"> Make Available Offline</label>
+				<a href="https://glitch.com/edit/#!/remix/magic-puddle">Remix on Glitch</a>
+				<a href="https://pixievoltno1.itch.io/magic-puddle/donate">Donate</a>
+				<a href="https://pixievoltno1.com/web/">More Web Wonders</a>
+				<div id="info">
+					<p>Magic Puddle <span itemprop="version">v4.0</span></p>
+					<p itemprop="author" itemscope itemtype="https://schema.org/Person">Made by <a href="https://pixievoltno1.com" itemprop="url"><span itemprop="name">Pixievolt No. 1</span></a></p>
+					<p>Font: <a href="https://www.fontsquirrel.com/fonts/Folks-Light">Folks by Manfred Klein</a></p>
+				</div>
+			</div>
+			<button id="closeOptions" aria-label="Close">
+				<img src="closeButton.v1.svg" aria-hidden="true">
+			</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>

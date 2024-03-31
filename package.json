@@ -1,0 +1,27 @@
+{
+	"private": true,
+	"devDependencies": {
+		"@guanghechen/rollup-plugin-copy": "^5.0.12",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-replace": "^5.0.5",
+		"@rollup/plugin-terser": "^0.4.4",
+		"animejs": "^3.2.2",
+		"idb-keyval": "^6.2.1",
+		"rollup": "^3.29.4",
+		"workbox-build": "^7.0.0"
+	},
+	"engines": {
+		"node": "16.x",
+		"pnpm": ">=8"
+	},
+	"glitch": {
+		"projectType": "generated_static"
+	},
+	"scripts": {
+		"home-build": "rollup --config --configSite=home",
+		"home-watch": "rollup --config --configSite=home --watch",
+		"itch-build": "rollup --config --configSite=itch",
+		"start": "rollup --config --configSite=glitch --watch",
+		"build": "rollup --config --configSite=glitch"
+	}
+}
