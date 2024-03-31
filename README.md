@@ -8,7 +8,9 @@
 
 # Recommended build method: Remix on Glitch
 
-If you're reading this on Glitch, you're already all set up to work on the code and have it automatically built for you - have fun! If not, [this link](https://glitch.com/edit/#!/remix/magic-puddle) opens a new Glitch project ready to edit.
+If you're reading this on Glitch, you're already all set up to work on the code and have it automatically built for you - have fun! Be sure to reload your preview after making changes.
+
+If you're not on Glitch, [this link](https://glitch.com/edit/#!/remix/magic-puddle) opens a new Glitch project ready to edit.
 
 # Setting up a local build
 
@@ -16,4 +18,4 @@ To set up development on your own computer, you'll need [Node](https://nodejs.or
 
 At the top of the [GitHub repo page](https://github.com/PixievoltNo1/Magic-Puddle) you'll find options for forking and/or downloading the code. Once you have the Git repo's files on your computer, open a terminal there and type `npm install` to do the first-time setup.
 
-With all the setup done, you can use `npm start` to create Magic Puddle in a `build` folder and keep it automatically updated as you edit the source files, or use `npm run build` for a one-time build. You'll need an HTTP server of some sort pointed at `build` to try it in your browser; a great basic option is `npx http-server build` (npx is included with Node).
+Once setup is done, `npm start` creates the `build` folder, starts a watcher to rebuild it as you make changes, and starts an HTTP server so you can see your work in the browser! You can also use `npm run build -- --watch` for just the build and the watcher, or just `npm run build` for a one-time build.

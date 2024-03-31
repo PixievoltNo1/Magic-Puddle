@@ -20,7 +20,7 @@
 		"home-build": "rollup --config --configSite=home",
 		"home-watch": "rollup --config --configSite=home --watch",
 		"itch-build": "rollup --config --configSite=itch",
-		"start": "rollup --config --configSite=glitch --watch",
+		"start": "npx concurrently -n rollup,server 'npm run build -- --watch' 'npx http-server build -c-1'",
 		"build": "rollup --config --configSite=glitch"
 	}
 }
