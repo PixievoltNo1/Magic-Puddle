@@ -59,7 +59,7 @@ if (SITE != "itch" && navigator.serviceWorker) {
 	if (!isItchApp) {
 		offlineCheckbox.addEventListener("input", (event) => {
 			event.target.checked = false;
-			showMessage(`To enjoy Magic Puddle offline, download it with the <a href="https://itch.io/app">Itch app</a>, or open it on <a href="https://pixievoltno1.com/web/MagicPuddle/">pixievoltno1.com</a> or <a href="https://magic-puddle.glitch.me/">Glitch</a> and check "Make Available Offline" there.`);
+			showMessage(`To enjoy Magic Puddle offline, download it with the <a href="https://itch.io/app">Itch app</a>, or open it on <a href="https://pixievoltno1.com/web/MagicPuddle/">pixievoltno1.com</a> or <a href="https://pixievoltno1.github.io/Magic-Puddle/">GitHub Pages</a> and check "Make Available Offline" there.`);
 		});
 	} else {
 		offlineCheckbox.closest("label").hidden = true;

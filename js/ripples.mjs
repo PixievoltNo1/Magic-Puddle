@@ -1,13 +1,18 @@
 import { quadrantWidth, quadrantHeight, SVGCSSUnitRatio } from "./displayFitting.mjs";
 import { svgElem, sign, randomColor } from "./utils.mjs";
-import anime from "animejs";
+import { animate } from "animejs";
 
 const LINE_WIDTH = 3;
 
 /**
- * - color may be any CSS color
- * - speed, x, and y are specified in SVG units; see displayFitting.mjs for the nitty-gritty
- * - delay is in ms
+ * Creates & animates a ripple. See displayFitting.mjs for how SVG units relate to CSS pixels.
+ * @param {string} color - May be any CSS color value
+ * @param {number} speed - Written in SVG units per millisecond. Values under 1 are recommended.
+ * @param {Object} details
+ * @param {number} details.x - Written in SVG units, 0 = center, increasing = rightwards
+ * @param {number} details.y - Written in SVG units, 0 = center, increasing = downwards
+ * @param {number} [details.delay] - Written in milliseconds
+ * @returns {import("animejs").JSAnimation} The ripple's Anime.js animation
  */
 export function createRipple(color, speed, { x, y, delay = 0 }) {
 	// Calculate the greatest size that the ripple can be and still be partially visible
@@ -23,10 +28,8 @@ export function createRipple(color, speed, { x, y, delay = 0 }) {
 	ripple.style.strokeWidth = LINE_WIDTH;
 	document.querySelector("#puddle").appendChild(ripple);
 	var time = maxRadius / speed;
-	return anime({
-		targets: ripple, r: maxRadius,
-		duration: time, easing: "linear", delay,
-		complete() { document.querySelector("#puddle").removeChild(ripple) },
+	return animate(ripple, {
+		r: maxRadius, duration: time, ease: "linear", delay, onComplete() { ripple.remove(); },
 	});
 }
 

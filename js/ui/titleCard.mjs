@@ -1,4 +1,4 @@
-import anime from "animejs";
+import { animate } from "animejs";
 import { optionsVisible } from "./options.mjs";
 
 let titleCard = document.querySelector("#titleCard");
@@ -24,15 +24,17 @@ function setTitleCardTimeout() {
 	titleCardTimeout = setTimeout(function () {
 		if (titleCardVisibility != "visible" || optionsVisible) { return; }
 		titleCardVisibility = "invisible";
-		anime({ targets: titleCard, opacity: 0, duration: 400, easing: "easeInOutQuad" });
+		animate(titleCard, { opacity: 0, duration: 400, ease: "inOutQuad" });
 	}, 5500);
 }
 setTitleCardTimeout();
 function wakeTitleCard() {
 	if (titleCardVisibility == "invisible") {
 		titleCardVisibility = "appearing";
-		anime({
-			targets: titleCard, opacity: 1, duration: 300, easing: "easeInOutQuad",
+		animate(titleCard, {
+			opacity: 1,
+			duration: 300,
+			ease: "inOutQuad",
 			complete() {
 				titleCardVisibility = "visible";
 				setTitleCardTimeout();

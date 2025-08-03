@@ -1,4 +1,4 @@
-import anime from "animejs";
+import { animate } from "animejs";
 
 var messageBox = document.querySelector("#messageBox");
 export function showMessage(messageHtml) {
@@ -6,17 +6,18 @@ export function showMessage(messageHtml) {
 	messageBox.hidden = false;
 	let distanceToOffscreen =
 		document.documentElement.clientHeight - messageBox.getBoundingClientRect().y;
-	messageBox.style.transform = `translateY(${distanceToOffscreen}px)`;
-	anime({ targets: messageBox, translateY: 0, duration: 400, easing: "easeOutCubic" });
+	animate(messageBox, { translateY: {from: distanceToOffscreen, to: 0}, duration: 400, ease: "outCubic" });
 	// preventScroll prevents unneeded scrolling in the itch.io embed
 	document.querySelector("#dismissMessage").focus({ preventScroll: true });
 }
 document.querySelector("#dismissMessage").addEventListener("click", () => {
 	let distanceToOffscreen =
 		document.documentElement.clientHeight - messageBox.getBoundingClientRect().y;
-	anime({
-		targets: messageBox, translateY: distanceToOffscreen, duration: 400, easing: "easeOutCubic",
-		complete() {
+	animate(messageBox, {
+		translateY: distanceToOffscreen,
+		duration: 400,
+		ease: "outCubic",
+		onComplete() {
 			messageBox.hidden = true;
 			messageBox.style.transform = "";
 		},

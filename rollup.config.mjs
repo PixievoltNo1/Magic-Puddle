@@ -6,16 +6,19 @@ import {injectManifest, getManifest} from "workbox-build";
 
 /** @type {import("rollup").PluginImpl} */
 function serviceWorkerPlugin() {
+	let homeRollupPlugin;
 	return {
 		name: "service-worker",
-		buildStart() { this.addWatchFile("js/serviceWorker.js"); },
+		buildStart(options) {
+			this.addWatchFile("js/serviceWorker.js");
+			homeRollupPlugin = options.plugins.find( ({name}) => name == "homeRollup" );
+		},
 		async writeBundle(options) {
 			let buildDir = options.dir;
 			let rollupEntries = (await getManifest({
 				globDirectory: buildDir,
 				globPatterns: ["magicPuddle.js"],
 			})).manifestEntries;
-			let homeRollupPlugin = options.plugins.find( ({name}) => name == "homeRollup" );
 			if (homeRollupPlugin) {
 				rollupEntries.push(...homeRollupPlugin.api.externalFileUrls);
 			}
@@ -48,7 +51,7 @@ export default async function buildJs({configSite: site}) {
 				{ src: "MagicPuddle.html", rename: "index.html", dest: "build" },
 				{ src: ["*.{woff,svg,css}"], dest: "build" }
 			]}),
-			(site == "glitch") && copy({targets: [
+			(site == "standalone") && copy({targets: [
 				{ src: ["app.webmanifest", "screenshot.png"], dest: "build" }
 			]}),
 			terser(),

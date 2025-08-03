@@ -1,5 +1,3 @@
-import { showMessage } from "./ui/messageBox.mjs";
-
 export const isItchApp = SITE == "itch" && !location.protocol.startsWith("http");
 
 if (SITE == "itch") {
@@ -12,20 +10,7 @@ if (SITE == "itch") {
 			document.querySelector("#fullscreen").disabled = true;
 		}
 	} else {
-		if (navigator.userAgent.includes(" itch/25")) {
-			let stylesheet = new CSSStyleSheet();
-			stylesheet.insertRule(".disableFocusRing :focus { outline: none; }");
-			document.adoptedStyleSheets = [...document.adoptedStyleSheets, stylesheet];
-			let bodyClasses = document.body.classList;
-			document.addEventListener("pointerdown", () => bodyClasses.add("disableFocusRing"));
-			document.addEventListener("keydown", () => bodyClasses.remove("disableFocusRing"));
-			document.addEventListener("click", (event) => {
-				let {target} = event;
-				if (!(target instanceof HTMLAnchorElement)) {return;}
-				event.preventDefault();
-				navigator.clipboard.writeText(target.href);
-				showMessage(`This link's URL has been copied to your clipboard. Paste it your browser's address bar!`)
-			});
-		}
+		// Work around Itch v26 opening the donate page in the same window with no way back
+		document.querySelector("#donate").href = "https://tinyurl.com/MagicPuddleDonate";
 	}
 }

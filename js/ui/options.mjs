@@ -1,4 +1,4 @@
-import anime from "animejs";
+import { animate } from "animejs";
 import * as idb from "idb-keyval";
 
 let optionsButton = document.querySelector("#optionsButton");
@@ -11,22 +11,19 @@ function toggleOptions() {
 	let distanceToOffscreen =
 		document.documentElement.clientHeight - optionsLayer.getBoundingClientRect().y;
 	if (optionsVisible) {
-		optionsLayer.style.transform = `translateY(${distanceToOffscreen}px)`;
-		anime({
-			targets: optionsLayer,
-			translateY: 0,
+		animate(optionsLayer, {
+			translateY: {from: distanceToOffscreen, to: 0},
 			duration: 400,
-			easing: "easeOutCubic",
-			complete() { optionsLayer.inert = false; }
+			ease: "outCubic",
+			onComplete() { optionsLayer.inert = false; }
 		});
 	} else {
 		optionsLayer.inert = true;
-		anime({
-			targets: optionsLayer,
+		animate(optionsLayer, {
 			translateY: distanceToOffscreen,
 			duration: 400,
-			easing: "easeOutCubic",
-			complete() {
+			ease: "outCubic",
+			onComplete() {
 				optionsLayer.hidden = true;
 				optionsLayer.style.transform = "";
 			}
