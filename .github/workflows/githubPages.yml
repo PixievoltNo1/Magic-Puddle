@@ -2,7 +2,6 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches:
       - main
@@ -47,14 +46,9 @@ jobs:
       # End copied section
       - name: Run package build script
         run: pnpm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: build/
       - name: Deploy to GitHub Pages
         id: deployment
