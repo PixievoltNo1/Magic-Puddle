@@ -49,7 +49,7 @@ if (SITE != "itch" && navigator.serviceWorker) {
 		setOfflineReadiness(offlineCheckbox.checked);
 	});
 	window.addEventListener("appinstalled", () => setOfflineReadiness(true));
-} else if (SITE != "itch") { // window.navigator is missing
+} else if (SITE != "itch") { // navigator.serviceWorker is missing
 	offlineCheckbox.addEventListener("input", () => {
 		showMessage(`Couldn't become offline-ready, possibly due to your browser's privacy settings.`);
 		offlineCheckbox.checked = false;

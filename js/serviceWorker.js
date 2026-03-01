@@ -41,7 +41,12 @@ self.addEventListener("message", (event) => {
 	event.waitUntil( (async() => {
 		if ("setOfflineReadiness" in event.data) {
 			if (event.data.setOfflineReadiness) {
-				await setUpCache(); // TODO: Handle error
+				try {
+					await setUpCache();
+				} catch (o_o) {
+					event.source.postMessage({offlineReadiness: "error"});
+					return;
+				}
 			} else {
 				await caches.delete(myCacheName);
 			}

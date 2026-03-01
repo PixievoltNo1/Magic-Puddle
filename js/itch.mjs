@@ -10,7 +10,15 @@ if (SITE == "itch") {
 			document.querySelector("#fullscreen").disabled = true;
 		}
 	} else {
-		// Work around Itch v26 opening the donate page in the same window with no way back
-		document.querySelector("#donate").href = "https://tinyurl.com/MagicPuddleDonate";
+		// Ensure links clicked open in the default browser, not the game window
+		if (navigator.userAgent.includes(" itch/26.1.9")) {
+			// Itch v26.1.9 opens only itch.io links in the game window, with no way to change this
+			document.querySelector("#donate").href = "https://tinyurl.com/MagicPuddleDonate";
+		} else { // Assume latest Itch version, v26.6.0
+			// Itch v26.6.0 opens all links in the game window, but lets us change this
+			let base = document.createElement("base");
+			base.target = "_blank";
+			document.head.append(base);
+		}
 	}
 }
